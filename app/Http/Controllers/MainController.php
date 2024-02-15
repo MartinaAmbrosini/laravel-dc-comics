@@ -51,6 +51,7 @@ class MainController extends Controller
 
         $newComic->save();
 
+        var_dump($data);
         return redirect()->route('comics.show', $newComic->id);
     }
 

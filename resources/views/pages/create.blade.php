@@ -14,17 +14,17 @@
         <label for="title">Titolo</label>
         <input type="text" name="title" id="title">
         <br>
-        <label for="author">Nome Autore</label>
-        <input type="text" name="author_firstname" id="author_name">
+        <label for="author_firstname">Nome Autore</label>
+        <input type="text" name="author_firstname" id="author_firstname">
         <br>
-        <label for="author">Cognome Autore</label>
-        <input type="text" name="author_lastname" id="author_surname">
+        <label for="author_lastname">Cognome Autore</label>
+        <input type="text" name="author_lastname" id="author_lastname">
         <br>
         <label for="genre">Genere</label>
-        <input type="text" title="genre" id="genre">
+        <input type="text" name="genre" id="genre">
         <br>
         <label for="date_of_publish">Data di pubblicazione</label>
-        <input type="text" title="date_of_publish" id="date_of_publish">
+        <input type="text" name="date_of_publish" id="date_of_publish">
         <br>
         <input type="submit" value="CREATE">
     </form>
