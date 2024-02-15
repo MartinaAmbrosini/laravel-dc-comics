@@ -17,7 +17,11 @@ class ComicFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => fake()->sentence(3),
+            'author_firstname' => fake()->firstName,
+            'author_lastname' => fake()->lastName,
+            'genre' => fake()->sentence(2),
+            'date_of_publish' => fake()->dateTime(),
         ];
     }
 }

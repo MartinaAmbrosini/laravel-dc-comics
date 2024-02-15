@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Comic;
+
+
 class MainController extends Controller
 {
     /**
@@ -13,7 +16,9 @@ class MainController extends Controller
      */
     public function index()
     {
-        //
+        $comics = Comic::all();
+
+        return view('pages.index', compact('comics'));
     }
 
     /**
@@ -23,7 +28,7 @@ class MainController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.create');
     }
 
     /**
@@ -34,7 +39,19 @@ class MainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newComic = new Comic();
+
+        $newComic->title = $data['title'];
+        $newComic->author_firstname = $data['author_firstname'];
+        $newComic->author_lastname = $data['author_lastname'];
+        $newComic->genre = $data['genre'];
+        $newComic->date_of_publish = $data['date_of_publish'];
+
+        $newComic->save();
+
+        return redirect()->route('comics.show', $newComic->id);
     }
 
     /**
@@ -45,7 +62,9 @@ class MainController extends Controller
      */
     public function show($id)
     {
-        //
+        $comic = Comic::find($id);
+
+        return view('pages.show', compact('comic'));
     }
 
     /**
