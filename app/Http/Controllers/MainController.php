@@ -51,7 +51,6 @@ class MainController extends Controller
 
         $newComic->save();
 
-        var_dump($data);
         return redirect()->route('comics.show', $newComic->id);
     }
 
@@ -76,7 +75,9 @@ class MainController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic = Comic::find($id);
+
+        return view('pages.edit', compact('comic'));
     }
 
     /**
@@ -88,7 +89,19 @@ class MainController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comic = Comic::find($id);
+
+        $data = $request->all();
+
+        $comic->title = $data['title'];
+        $comic->author_firstname = $data['author_firstname'];
+        $comic->author_lastname = $data['author_lastname'];
+        $comic->genre = $data['genre'];
+        $comic->date_of_publish = $data['date_of_publish'];
+
+        $comic->save();
+
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
@@ -99,6 +112,9 @@ class MainController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comic = Comic::find($id);
+        $comic->delete();
+
+        return redirect()->route('comics.index');
     }
 }

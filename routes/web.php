@@ -15,3 +15,12 @@ Route::post('/comics', [MainController::class, 'store'])
 
 Route::get('/comics/{id}', [MainController::class, 'show'])
     ->name('comics.show');
+
+Route::delete('/comics/{id}', [MainController::class, 'destroy'])
+    ->name('comics.destroy');
+
+
+Route::get('/comics/{id}/edit', [MainController::class, 'edit'])
+    ->name('comics.edit');
+Route::put('/comics/{id}', [MainController::class, 'update'])
+    ->name('comics.update');
