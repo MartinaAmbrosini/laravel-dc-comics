@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComicFromRequest;
 use Illuminate\Http\Request;
 
 use App\Models\Comic;
@@ -87,11 +88,14 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ComicFromRequest $request, $id)
     {
         $comic = Comic::find($id);
 
         $data = $request->all();
+        // $data = $request->validate([
+
+        // ]);
 
         $comic->title = $data['title'];
         $comic->author_firstname = $data['author_firstname'];

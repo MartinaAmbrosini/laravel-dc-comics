@@ -7,6 +7,15 @@
         {{$comic -> id}}
         EDIT COMIC  
     </h1>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form action=" {{ route('comics.update', $comic -> id)}}" method="POST">
 
         @csrf 
@@ -15,6 +24,9 @@
         <label for="title">Titolo</label>
         <input type="text" name="title" id="title" value="{{$comic -> title}}">
         <br>
+        @error('title')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <label for="author_firstname">Nome Autore</label>
         <input type="text" name="author_firstname" id="author_firstname" value="{{$comic -> author_firstname}}">
         <br>
